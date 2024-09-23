@@ -45,15 +45,15 @@ const userSchema = new mongoose.Schema({
         }
 
     },
-    photoURL:{
-        type:String,
-        default:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD116U9ZCk8bEaanCeB5rSCC2uqY5Ka_2_EA&s",
-        validate(value){
-            if(!validator.isURL(value)){
-                throw new Error("invalid url"+value)
-            }
+    photoUrl: {
+        type: String,
+        default: "https://geographyandyou.com/images/user-profile.png",
+        validate(value) {
+          if (!validator.isURL(value)) {
+            throw new Error("Invalid Photo URL: " + value);
+          }
         },
-    },
+      },
     about:{
         type:String,
         default:"This is devtinder app"
