@@ -27,7 +27,7 @@ const  userAuth =async (req,res,next)=>{
     //read the token from the req cookies
   try {const {token} = req.cookies
   if(!token){
-    throw new Error("token is not valid")
+    return res.status(401).send("Please log in")
   }
 
    const decodedObj = await jwt.verify(token,"DEVhkj@$jsjj222ahk")

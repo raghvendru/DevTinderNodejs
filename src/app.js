@@ -3,13 +3,17 @@ const app = express();
 const connectDb = require("./config/database")
 const cookieparser = require("cookie-parser")
 const jwt = require("jsonwebtoken")
+const cors =require("cors")
 
 const authRouter =require("./routes/auth")
 const profileRouter =require("./routes/profile")
 const requestRouter = require("./routes/request")
 const userRouter = require("./routes/user")
 
-
+app.use(cors({
+    origin:"http://localhost:5173",
+    credentials:true,
+}));
 app.use(express.json());//to conv json to js obj
 app.use(cookieparser());//to store and send back token and read
 
