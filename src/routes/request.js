@@ -4,6 +4,7 @@ const requestRouter  = express.Router()
 const {userAuth} =require("../middlewares/auth");
 const ConnectionRequest = require("../model/connectionRequest");
 const User = require("../model/user");
+const sendEmail = require("../utils/sendEmail")
 
 
 requestRouter.post("/request/send/:status/:toUserId",userAuth,async(req,res)=>{
@@ -48,6 +49,10 @@ requestRouter.post("/request/send/:status/:toUserId",userAuth,async(req,res)=>{
         })
 
         const data = await connectionRequest.save();
+        const emailRes = await sendEmail.run("a new frd req from" + req.user.firstName,req.user.firstName + " is " + status +" in "+toUser.firstName);
+        console.log(emailRes);
+
+
         res.json({
             message:req.user.firstName + " is " + status +" in "+toUser.firstName,
             data,

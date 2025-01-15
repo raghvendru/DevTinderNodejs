@@ -4,6 +4,7 @@ const connectDb = require("./config/database")
 const cookieparser = require("cookie-parser")
 const jwt = require("jsonwebtoken")
 const cors =require("cors")
+require("dotenv").config();
 
 const authRouter =require("./routes/auth")
 const profileRouter =require("./routes/profile")
